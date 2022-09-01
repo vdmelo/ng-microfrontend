@@ -41,6 +41,12 @@ module.exports = withModuleFederationPlugin({
       strictVersion: true,
       requiredVersion: "auto",      
     },
+    "@ngxs/store": {
+      singleton: true,
+      strictVersion: true,
+      requiredVersion: "auto",      
+    },
+    
   })
   /*{
     ...shareAll({
