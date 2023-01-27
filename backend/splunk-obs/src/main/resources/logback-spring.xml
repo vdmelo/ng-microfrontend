@@ -1,0 +1,36 @@
+<configuration>
+
+    <appender name="CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
+        <!-- encoders are assigned the type
+             ch.qos.logback.classic.encoder.PatternLayoutEncoder by default -->
+        <encoder>
+            <pattern>%-4relative [%thread] %-5level %logger{35} - %msg %n</pattern>
+        </encoder>
+
+    </appender>
+
+    <appender name="mySplunk" class="com.splunk.logging.HttpEventCollectorLogbackAppender">
+        <url>https://localhost:8088</url>
+        <index>main</index>
+        <token>15498b38-0376-405e-ab16-ef5cc591bfe8</token>
+        <batch_size_count>10</batch_size_count>
+        <disableCertificateValidation>true</disableCertificateValidation>
+        <layout class="ch.qos.logback.contrib.json.classic.JsonLayout">
+            <jsonFormatter class="ch.qos.logback.contrib.jackson.JacksonJsonFormatter" />
+            <timestampFormat>yyyy-MM-dd' 'HH:mm:ss.SSS Z</timestampFormat>
+            <appendLineSeparator>true</appendLineSeparator>
+        </layout>
+    </appender>
+
+    <logger name="com.vdmelo.splunkobs.service" level="info" additivity="false">
+        <appender-ref ref="mySplunk"/>
+        <appender-ref ref="CONSOLE"/>
+    </logger>
+
+    <root level="DEBUG">
+        <appender-ref ref="mySplunk"/>
+        <appender-ref ref="CONSOLE"/>
+    </root>
+
+</configuration>
+
