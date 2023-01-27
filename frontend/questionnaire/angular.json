@@ -3,7 +3,7 @@
 	"version": 1,
 	"newProjectRoot": "projects",
 	"projects": {
-		"profile": {
+		"questionnaire": {
 			"projectType": "application",
 			"schematics": {
 				"@schematics/angular:component": {
@@ -17,7 +17,7 @@
 				"build": {
 					"builder": "ngx-build-plus:browser",
 					"options": {
-						"outputPath": "dist/profile",
+						"outputPath": "dist/questionnaire",
 						"index": "src/index.html",
 						"main": "src/main.ts",
 						"polyfills": "src/polyfills.ts",
@@ -72,24 +72,24 @@
 					"builder": "ngx-build-plus:dev-server",
 					"configurations": {
 						"production": {
-							"browserTarget": "profile:build:production",
+							"browserTarget": "questionnaire:build:production",
 							"extraWebpackConfig": "webpack.prod.config.js"
 						},
 						"development": {
-							"browserTarget": "profile:build:development"
+							"browserTarget": "questionnaire:build:development"
 						}
 					},
 					"defaultConfiguration": "development",
 					"options": {
-						"port": 4201,
-						"publicHost": "http://localhost:4201",
+						"port": 4202,
+						"publicHost": "http://localhost:4202",
 						"extraWebpackConfig": "webpack.config.js"
 					}
 				},
 				"extract-i18n": {
 					"builder": "ngx-build-plus:extract-i18n",
 					"options": {
-						"browserTarget": "profile:build",
+						"browserTarget": "questionnaire:build",
 						"extraWebpackConfig": "webpack.config.js"
 					}
 				},
@@ -113,5 +113,8 @@
 				}
 			}
 		}
-	}
+  },
+  "cli": {
+    "analytics": false
+  }
 }
